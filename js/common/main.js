@@ -11,10 +11,11 @@ requirejs.config({
         jqueryCookie: 'lib/jquery-cookie/jquery.cookie',
         nprogress: 'lib/nprogress/nprogress',
         echarts: 'lib/echarts/echarts.min',
-        common: 'js/common/common',
-        useEcharts: 'js/common/useEcharts',
+        template:'lib/artTemplate-3.0.1/template',
 
         //自己写的路径配置
+        common: 'js/common/common',
+        useEcharts: 'js/common/useEcharts',
         userList: 'js/user/list',
         userProfile: 'js/user/profile',
         advertAdd: 'js/advert/add',
@@ -115,5 +116,4 @@ require(['jquery', 'bootstrap', 'nprogress', 'echarts', 'common']);
                 break;
         }
     });
-
 })(window);

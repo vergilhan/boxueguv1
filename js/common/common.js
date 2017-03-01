@@ -1,4 +1,10 @@
 define(['jquery', 'jqueryCookie', 'nprogress'], function ($, undefined, NProgress) {
+    //ajax请求loading
+    $(document).ajaxStart(function () {
+        $('.overlay').show();
+    }).ajaxStop(function () {
+        $('.overlay').hide();
+    });
     //进度条
     NProgress.start();
     NProgress.done();
@@ -6,11 +12,13 @@ define(['jquery', 'jqueryCookie', 'nprogress'], function ($, undefined, NProgres
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
     });
-
+    //根据页面路径定位左侧导航
+    var pathname=window.location.pathname;
+    $('.nav a').removeClass('active').filter('[href="'+pathname+'"]').addClass('active').parents('ul').show();
     //退出功能
     $('#logout').on('click', function () {
         $.post('/v6/logout', function (data) {
-            if (data.code === "200") {
+            if (data.code == 200) {
                 location.href = '/html/home/login.html';
             }
         });
