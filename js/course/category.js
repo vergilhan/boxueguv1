@@ -1,6 +1,10 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery'], function ($) {
-    console.log("加载courseCategory");
+define(['jquery','template'], function ($,template) {
+    $.get('/v6/category', function (data) {
+        if(data.code==200){
+            $('#category-tbody').append(template('category-list-tpl',{ list:data.result }));
+        }
+    })
 });

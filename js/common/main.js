@@ -14,6 +14,9 @@ requirejs.config({
         template:'lib/artTemplate-3.0.1/template',
         datepicker:'lib/bootstrap-datepicker/js/bootstrap-datepicker',
         datepickerLanguage:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        region:'lib/jquery-region/jquery.region',
+        ckeditor:'lib/ckeditor/ckeditor',
+        uploadify:'lib/uploadify/jquery.uploadify.min',
 
         //自己写的路径配置
         common: 'js/common/common',
@@ -43,6 +46,12 @@ requirejs.config({
         },
         datepickerLanguage:{
             deps:['jquery','datepicker']
+        },
+        ckeditor:{
+            exports:'CKEDITOR'
+        },
+        uploadify:{
+            deps:['jquery']
         }
     }
 });
