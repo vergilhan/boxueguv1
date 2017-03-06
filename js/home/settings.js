@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery', 'template', 'region', 'datepicker', 'datepickerLanguage', 'uploadify'], function ($, template, undefined, datepicker, undefined, undefined) {
+define(['jquery', 'template', 'region', 'datepicker', 'datepickerLanguage', 'uploadify','ckeditor'], function ($, template, undefined, datepicker, undefined, undefined,ckeditor) {
     //展示个人信息到表单
     $.get('/v6/teacher/profile', function (data) {
         if (data.code == 200) {
@@ -31,13 +31,14 @@ define(['jquery', 'template', 'region', 'datepicker', 'datepickerLanguage', 'upl
                 }
             });
             //配置富文本编辑器
-            //ckeditor.replace('ckeditor');
+            var edit = ckeditor.replace('ckeditor');
             //监听提交事件
             $('.form-horizontal').on('submit', function () {
                 //生成一个tc_hometown参数，格式为：省|市|县
                 var hometown = $('.hometown select').map(function () {
                     return $(this).find('option:selected').text();
                 }).toArray().join('|');
+                edit.updateElement();
                 $.ajax({
                     url: '/v6/teacher/modify',
                     type: 'post',
